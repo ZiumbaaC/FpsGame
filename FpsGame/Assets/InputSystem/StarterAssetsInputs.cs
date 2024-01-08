@@ -11,6 +11,11 @@ namespace StarterAssets
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
+		public bool damage;
+		public bool movement1;
+		public bool movement2;
+		public bool shoot;
+		public bool aimDownSights;
 		public bool sprint;
 
 		[Header("Movement Settings")]
@@ -39,7 +44,32 @@ namespace StarterAssets
 			JumpInput(value.isPressed);
 		}
 
-		public void OnSprint(InputValue value)
+        public void OnDamage(InputValue value)
+        {
+            DamageInput(value.isPressed);
+        }
+
+        public void OnMovement1(InputValue value)
+        {
+            Movement1Input(value.isPressed);
+        }
+
+        public void OnMovement2(InputValue value)
+        {
+            Movement2Input(value.isPressed);
+        }
+
+        public void OnShoot(InputValue value)
+        {
+            ShootInput(value.isPressed);
+        }
+
+        public void OnAimDownSights(InputValue value)
+        {
+            AimDownSightsInput(value.isPressed);
+        }
+
+        public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
 		}
@@ -65,8 +95,33 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-		
-		private void OnApplicationFocus(bool hasFocus)
+
+        public void DamageInput(bool newDamageState)
+        {
+            damage = newDamageState;
+        }
+
+        public void Movement1Input(bool newMovement1State)
+        {
+            movement1 = newMovement1State;
+        }
+
+        public void Movement2Input(bool newMovement2State)
+        {
+            movement2 = newMovement2State;
+        }
+
+        public void ShootInput(bool newShootState)
+        {
+            shoot = newShootState;
+        }
+
+        public void AimDownSightsInput(bool newAimDownSightsState)
+        {
+            aimDownSights = newAimDownSightsState;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

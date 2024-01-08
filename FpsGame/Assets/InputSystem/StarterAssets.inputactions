@@ -267,7 +267,7 @@
                 {
                     "name": "",
                     "id": "00d4ab3e-c3bb-4110-9bf1-55a71aac0e5a",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/#(Q)",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
@@ -289,7 +289,7 @@
                 {
                     "name": "",
                     "id": "5b6d6709-ccb7-4504-a0af-31d256b6c707",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/#(E)",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
@@ -311,7 +311,7 @@
                 {
                     "name": "",
                     "id": "147e2979-d076-4ab9-9b7c-dcff14af6c53",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/#(F)",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
