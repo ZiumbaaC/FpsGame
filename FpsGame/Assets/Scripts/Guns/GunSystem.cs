@@ -4,10 +4,10 @@ public class GunSystem : MonoBehaviour
 {
     //Gun stats
     public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
+    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots, recoil;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
-    int bulletsLeft, bulletsShot;
+    private int bulletsLeft, bulletsShot;
 
     //bools 
     bool readyToShoot, reloading;
@@ -17,10 +17,14 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
 
+    private Recoil recoilSystem;
+
+
     public void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        recoilSystem = transform.Find("CameraRot/CameraRecoil").GetComponent<Recoil>();
     }
 
     public void Shoot()
@@ -45,6 +49,8 @@ public class GunSystem : MonoBehaviour
             bulletsLeft--;
             bulletsShot--;
             Debug.Log(bulletsLeft);
+
+            recoilSystem.HandleRecoil();
 
             Invoke("ResetShot", timeBetweenShooting);
 
