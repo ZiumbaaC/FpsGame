@@ -27,6 +27,5 @@ public class Recoil : MonoBehaviour
     public void HandleRecoil()
     {
         targetRotation += new Vector3(gun.recoil, 0, 0);
-        Debug.Log(targetRotation);
     }
 }

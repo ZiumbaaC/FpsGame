@@ -49,6 +49,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: recoil
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: magazineSize
     value: 6
     objectReference: {fileID: 0}
