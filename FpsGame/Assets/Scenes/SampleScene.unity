@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bf977d4132b5a4aac0a6f3366695f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprinting: 0
 --- !u!114 &1021124831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,8 +544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gravity: -9.8
+  gravity: -14
   jumpHeight: 1
+  sprintingSpeedBoost: 3
 --- !u!114 &1021124832
 MonoBehaviour:
   m_ObjectHideFlags: 0

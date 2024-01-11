@@ -80,6 +80,51 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Damage"",
+                    ""type"": ""Button"",
+                    ""id"": ""29a4573d-bcbc-42c4-826f-92c82a4a3d09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement1"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b5b5f90-4762-4f70-95a6-31cdaf82a606"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement2"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0c928f0-7200-4e79-95b5-79ad8289ac8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SprintKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""96c0a351-6668-4cbb-a1f4-4e8fd75047d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SprintGamepad"",
+                    ""type"": ""Button"",
+                    ""id"": ""a60b25eb-e971-499d-b256-3758c2aa6010"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -302,6 +347,94 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcea0d5d-3ca3-44ea-9d22-c677962c3cda"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69554161-80ad-4e38-b34b-e118fdb0e057"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61ab3700-d0c9-47c6-97a3-e4cc337c9a2f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movement1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31980677-9edc-4de9-b88f-60b5d13d4bdd"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82aed7bb-dce5-491b-af86-fa9c01796473"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movement2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d08c09d8-079d-47b7-8730-30fbbec1879f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""561a6a3e-220f-40ed-adf1-b0d2f307dc77"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SprintKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7152994f-56f5-4fb1-8e1b-62831b5ebe72"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SprintGamepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -377,6 +510,11 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         m_Player_Ads = m_Player.FindAction("Ads", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
+        m_Player_Movement1 = m_Player.FindAction("Movement1", throwIfNotFound: true);
+        m_Player_Movement2 = m_Player.FindAction("Movement2", throwIfNotFound: true);
+        m_Player_SprintKeyboard = m_Player.FindAction("SprintKeyboard", throwIfNotFound: true);
+        m_Player_SprintGamepad = m_Player.FindAction("SprintGamepad", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -444,6 +582,11 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ads;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_Damage;
+    private readonly InputAction m_Player_Movement1;
+    private readonly InputAction m_Player_Movement2;
+    private readonly InputAction m_Player_SprintKeyboard;
+    private readonly InputAction m_Player_SprintGamepad;
     public struct PlayerActions
     {
         private @FpsGameInput m_Wrapper;
@@ -454,6 +597,11 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         public InputAction @Ads => m_Wrapper.m_Player_Ads;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @Damage => m_Wrapper.m_Player_Damage;
+        public InputAction @Movement1 => m_Wrapper.m_Player_Movement1;
+        public InputAction @Movement2 => m_Wrapper.m_Player_Movement2;
+        public InputAction @SprintKeyboard => m_Wrapper.m_Player_SprintKeyboard;
+        public InputAction @SprintGamepad => m_Wrapper.m_Player_SprintGamepad;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -481,6 +629,21 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Damage.started += instance.OnDamage;
+            @Damage.performed += instance.OnDamage;
+            @Damage.canceled += instance.OnDamage;
+            @Movement1.started += instance.OnMovement1;
+            @Movement1.performed += instance.OnMovement1;
+            @Movement1.canceled += instance.OnMovement1;
+            @Movement2.started += instance.OnMovement2;
+            @Movement2.performed += instance.OnMovement2;
+            @Movement2.canceled += instance.OnMovement2;
+            @SprintKeyboard.started += instance.OnSprintKeyboard;
+            @SprintKeyboard.performed += instance.OnSprintKeyboard;
+            @SprintKeyboard.canceled += instance.OnSprintKeyboard;
+            @SprintGamepad.started += instance.OnSprintGamepad;
+            @SprintGamepad.performed += instance.OnSprintGamepad;
+            @SprintGamepad.canceled += instance.OnSprintGamepad;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -503,6 +666,21 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Damage.started -= instance.OnDamage;
+            @Damage.performed -= instance.OnDamage;
+            @Damage.canceled -= instance.OnDamage;
+            @Movement1.started -= instance.OnMovement1;
+            @Movement1.performed -= instance.OnMovement1;
+            @Movement1.canceled -= instance.OnMovement1;
+            @Movement2.started -= instance.OnMovement2;
+            @Movement2.performed -= instance.OnMovement2;
+            @Movement2.canceled -= instance.OnMovement2;
+            @SprintKeyboard.started -= instance.OnSprintKeyboard;
+            @SprintKeyboard.performed -= instance.OnSprintKeyboard;
+            @SprintKeyboard.canceled -= instance.OnSprintKeyboard;
+            @SprintGamepad.started -= instance.OnSprintGamepad;
+            @SprintGamepad.performed -= instance.OnSprintGamepad;
+            @SprintGamepad.canceled -= instance.OnSprintGamepad;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -573,5 +751,10 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         void OnAds(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnDamage(InputAction.CallbackContext context);
+        void OnMovement1(InputAction.CallbackContext context);
+        void OnMovement2(InputAction.CallbackContext context);
+        void OnSprintKeyboard(InputAction.CallbackContext context);
+        void OnSprintGamepad(InputAction.CallbackContext context);
     }
 }
