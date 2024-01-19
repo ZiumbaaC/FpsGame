@@ -20,6 +20,8 @@ public class GunSystem : MonoBehaviour
     private TrailRenderer trail;
     [SerializeField]
     private Transform trailSpawnPoint;
+    [SerializeField]
+    private float trailSpeed;
 
     //HUD
     public TextMeshProUGUI ammoText;
@@ -59,11 +61,11 @@ public class GunSystem : MonoBehaviour
             TrailRenderer bulletTrail = Instantiate(trail, trailSpawnPoint.position, Quaternion.identity);
             if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
             {
-                StartCoroutine(SpawnTrail(bulletTrail, rayHit.point));
+                StartCoroutine(SpawnTrail(bulletTrail, rayHit.point, trailSpeed));
             }
             else
             {
-                StartCoroutine(SpawnTrail(bulletTrail, trailSpawnPoint.position + fpsCam.transform.forward * 100));
+                StartCoroutine(SpawnTrail(bulletTrail, trailSpawnPoint.position + fpsCam.transform.forward * 100, trailSpeed));
             }
 
             bulletsLeft--;
@@ -108,7 +110,7 @@ public class GunSystem : MonoBehaviour
         ammoText.text = NormalizeText($"Ammo: {bulletsLeft}/{magazineSize}");
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer bulletTrail, Vector3 hit)
+    private IEnumerator SpawnTrail(TrailRenderer bulletTrail, Vector3 hit, float trailSpeed)
     {
         Vector3 startPosition = bulletTrail.transform.position;
         float distance = Vector3.Distance(bulletTrail.transform.position, hit);
@@ -116,7 +118,7 @@ public class GunSystem : MonoBehaviour
 
         while (remainingDistance > 0)
         {
-            bulletTrail.transform.position = Vector3.Lerp(startPosition, hit, 1 - remainingDistance / distance);
+            bulletTrail.transform.position = Vector3.Lerp(startPosition, hit, (1 - remainingDistance / distance) * trailSpeed);
             remainingDistance -= bulletSpeed * Time.deltaTime;
             yield return null;
         }
