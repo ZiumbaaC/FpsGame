@@ -22,6 +22,7 @@ public class Recoil : MonoBehaviour
     }
     private void Update()
     {
+
         targetRotation -= new Vector3(targetRotation2.x / gun.timeBetweenShooting * Time.deltaTime, 0, 0);
         timer += Time.deltaTime;
 
@@ -29,10 +30,9 @@ public class Recoil : MonoBehaviour
         {
             targetRotation2 = Vector3.zero;
         }
-
-        Debug.Log(Vector3.Lerp(targetRotation2, Vector3.zero, gun.timeBetweenShooting * Time.deltaTime));
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
-        transform.localRotation = Quaternion.Euler(currentRotation);
+        transform.localRotation = Quaternion.Euler(new(currentRotation.x, 0, 0));
+        Debug.Log(targetRotation.z + ", " + targetRotation2.z);
     }
 
     public void HandleRecoil()
