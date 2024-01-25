@@ -273,6 +273,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a3050dbdb6109244f96b5387bd16e0d8, type: 3}
   m_PrefabInstance: {fileID: 243377811}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &243377813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a3050dbdb6109244f96b5387bd16e0d8, type: 3}
+  m_PrefabInstance: {fileID: 243377811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &243377814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243377813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d70e88bb543dd04c860758240f62276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 1023349329}
+  snappiness: 6
 --- !u!1 &384010679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1340,7 @@ MonoBehaviour:
   allowButtonHold: 0
   trail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256, type: 3}
   trailSpawnPoint: {fileID: 1988261662}
-  trailSpeed: 0
+  trailSpeed: 10
   ammoText: {fileID: 929526651}
   reloadingText: {fileID: 865757776}
   fpsCam: {fileID: 866226532}
@@ -1480,7 +1499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023349328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 5.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1533,6 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adbeed8cdc98b7241a4fcb9bd0cafedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 1023349329}
   snappiness: 6
 --- !u!1 &1150578141
 GameObject:

@@ -9,17 +9,12 @@ public class Recoil : MonoBehaviour
     private Vector3 targetRotation;
     private Vector3 targetRotation2;
 
-    private GunSystem gun;
+    public GunSystem gun;
 
     public float snappiness;
 
     private float timer = 0;
 
-
-    private void Awake()
-    {
-        gun = transform.parent.parent.GetComponent<GunSystem>();
-    }
     private void Update()
     {
 
@@ -32,7 +27,6 @@ public class Recoil : MonoBehaviour
         }
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
         transform.localRotation = Quaternion.Euler(new(currentRotation.x, 0, 0));
-        Debug.Log(targetRotation.z + ", " + targetRotation2.z);
     }
 
     public void HandleRecoil()

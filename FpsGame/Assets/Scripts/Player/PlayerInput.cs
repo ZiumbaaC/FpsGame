@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     private GunSystem gun;
 
     public bool sprinting = false;
+    public bool crouching = false;
 
     void Awake()
     {
@@ -30,7 +31,9 @@ public class PlayerInput : MonoBehaviour
         playerActions.Movement2.performed += ctx => PlaceHolder("Movement2");
         playerActions.SprintKeyboard.started += ctx => BeginSprint();
         playerActions.SprintKeyboard.canceled += ctx => CancelSprint();
-        
+        playerActions.Crouch.started += ctx => BeginCrouch();
+        playerActions.Crouch.canceled += ctx => CancelCrouch();
+
     }
 
     // Update is called once per frame
@@ -67,5 +70,15 @@ public class PlayerInput : MonoBehaviour
     private void CancelSprint()
     {
         sprinting = false;
+    }
+
+    private void BeginCrouch()
+    {
+        crouching = true;
+    }
+
+    private void CancelCrouch()
+    {
+        crouching = false;
     }
 }

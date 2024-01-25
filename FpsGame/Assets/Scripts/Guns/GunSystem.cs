@@ -32,12 +32,14 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     private Recoil recoilSystem;
+    private GunRecoil gunRecoilSystem;
 
     public void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
         recoilSystem = transform.Find("CameraRot/CameraRecoil").GetComponent<Recoil>();
+        gunRecoilSystem = transform.Find("CameraRot/CameraRecoil/Main Camera/model").GetComponent<GunRecoil>();
         ammoText.text = NormalizeText($"Ammo: {bulletsLeft}/{magazineSize}");
     }
 
@@ -74,6 +76,7 @@ public class GunSystem : MonoBehaviour
             ammoText.text = NormalizeText($"Ammo: {bulletsLeft}/{magazineSize}");
 
             recoilSystem.HandleRecoil();
+            gunRecoilSystem.HandleRecoil();
 
             Invoke("ResetShot", timeBetweenShooting);
 

@@ -125,6 +125,15 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f4efcf1-bd16-4562-ad81-881b3a1b2ef8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -435,6 +444,17 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
                     ""action"": ""SprintGamepad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8f5ba24-483b-4e30-a9b5-f56bbf2591e3"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -515,6 +535,7 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         m_Player_Movement2 = m_Player.FindAction("Movement2", throwIfNotFound: true);
         m_Player_SprintKeyboard = m_Player.FindAction("SprintKeyboard", throwIfNotFound: true);
         m_Player_SprintGamepad = m_Player.FindAction("SprintGamepad", throwIfNotFound: true);
+        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -587,6 +608,7 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement2;
     private readonly InputAction m_Player_SprintKeyboard;
     private readonly InputAction m_Player_SprintGamepad;
+    private readonly InputAction m_Player_Crouch;
     public struct PlayerActions
     {
         private @FpsGameInput m_Wrapper;
@@ -602,6 +624,7 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         public InputAction @Movement2 => m_Wrapper.m_Player_Movement2;
         public InputAction @SprintKeyboard => m_Wrapper.m_Player_SprintKeyboard;
         public InputAction @SprintGamepad => m_Wrapper.m_Player_SprintGamepad;
+        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -644,6 +667,9 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
             @SprintGamepad.started += instance.OnSprintGamepad;
             @SprintGamepad.performed += instance.OnSprintGamepad;
             @SprintGamepad.canceled += instance.OnSprintGamepad;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -681,6 +707,9 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
             @SprintGamepad.started -= instance.OnSprintGamepad;
             @SprintGamepad.performed -= instance.OnSprintGamepad;
             @SprintGamepad.canceled -= instance.OnSprintGamepad;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -756,5 +785,6 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
         void OnMovement2(InputAction.CallbackContext context);
         void OnSprintKeyboard(InputAction.CallbackContext context);
         void OnSprintGamepad(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }

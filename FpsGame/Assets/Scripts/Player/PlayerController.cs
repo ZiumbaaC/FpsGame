@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         if (grounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * 3 * -gravity);
         }
     }
 
