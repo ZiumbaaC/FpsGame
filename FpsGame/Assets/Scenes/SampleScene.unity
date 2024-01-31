@@ -1375,10 +1375,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 1402767554}
   maxHealth: 200
-  speed: 5
+  speed: 1.5
   gravity: -14
   jumpHeight: 1
-  sprintingSpeedBoost: 3
+  sprintingSpeedBoost: 0.45
+  bHoppingStacks: 0
+  bHoppingSpeedIncrease: 0.075
+  bHoppable: 0
+  bHoppingCounter: 0
+  bHoppingFrameWindow: 2
   health: 0
 --- !u!114 &1023349332
 MonoBehaviour:
@@ -1393,6 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprinting: 0
+  crouching: 0
 --- !u!114 &1023349333
 MonoBehaviour:
   m_ObjectHideFlags: 0

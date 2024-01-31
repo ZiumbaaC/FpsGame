@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private PlayerInput input;
     private Vector3 velocity;
+    private Vector3 movementVelocity;
     private bool grounded;
 
     public float maxHealth = 200f;
@@ -17,6 +18,12 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
     public float sprintingSpeedBoost = 3f;
+
+    public int bHoppingStacks = 0;
+    public float bHoppingSpeedIncrease = 0.1f;
+    public bool bHoppable = false;
+    public int bHoppingCounter = 0;
+    public int bHoppingFrameWindow = 2;
 
     [HideInInspector]
     public float health;
@@ -34,19 +41,41 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         grounded = controller.isGrounded;
-        movementSpeed = speed + sprintingSpeedBoost * Convert.ToInt32(input.sprinting);
+        movementSpeed = speed + sprintingSpeedBoost * Convert.ToInt32(input.sprinting) + bHoppingStacks * bHoppingSpeedIncrease;
         healthText.text = NormalizeText($"Health: {health}");
+    }
+
+    private void FixedUpdate()
+    {
+        if (grounded)
+        {
+            if (bHoppingCounter > bHoppingFrameWindow)
+            {
+                bHoppable = false;
+            }
+            else
+            {
+                bHoppable = true;
+            }
+            bHoppingCounter++;
+        }
+        else
+        {
+            bHoppable = false;
+        }
+
     }
 
     public void HandleMovement(Vector2 input)
     {
-        Vector3 move = Vector3.zero;
-        move.x = input.x;
-        move.z = input.y;
+        movementVelocity.x += input.x;
+        movementVelocity.z += input.y;
 
-        controller.Move(movementSpeed * Time.deltaTime * transform.TransformDirection(move));
+        controller.Move(movementSpeed * Time.deltaTime * transform.TransformDirection(movementVelocity));
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        movementVelocity /= 1.15f;
 
         if(grounded && velocity.y < 0)
         {
@@ -59,6 +88,11 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * 3 * -gravity);
+            bHoppingCounter = -1;
+            if (bHoppable)
+            {
+                bHoppingStacks++;
+            }
         }
     }
 
