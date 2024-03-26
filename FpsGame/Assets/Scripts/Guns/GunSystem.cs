@@ -5,12 +5,12 @@ using UnityEngine;
 public class GunSystem : MonoBehaviour
 {
     //Gun stats
-    public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots, recoil;
-    public int magazineSize, bulletsPerTap;
-    public float bulletSpeed;
-    public bool allowButtonHold;
+    [SerializeField] private int damage;
+    [SerializeField] private float spread, range, reloadTime, timeBetweenShots;
+    [SerializeField] private int magazineSize, bulletsPerTap;
+    [SerializeField] private bool allowButtonHold;
     private int bulletsLeft, bulletsShot;
+    public float timeBetweenShooting, recoil;
 
     //bools 
     bool readyToShoot, reloading;
@@ -24,17 +24,17 @@ public class GunSystem : MonoBehaviour
     private float trailSpeed;
 
     //HUD
-    public TextMeshProUGUI ammoText;
-    public TextMeshProUGUI reloadingText;
+    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private TextMeshProUGUI reloadingText;
 
     //Reference
-    public Camera fpsCam;
-    public RaycastHit rayHit;
-    public LayerMask whatIsEnemy;
+    [SerializeField] private Camera fpsCam;
+    [SerializeField] private RaycastHit rayHit;
+    [SerializeField] private LayerMask whatIsEnemy;
     private Recoil recoilSystem;
     private GunRecoil gunRecoilSystem;
 
-    public void Awake()
+    private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
@@ -91,7 +91,7 @@ public class GunSystem : MonoBehaviour
             }
         }
     }
-    public void ResetShot()
+    private void ResetShot()
     {
         readyToShoot = true;
     }
@@ -105,7 +105,7 @@ public class GunSystem : MonoBehaviour
             Invoke("ReloadFinished", reloadTime);
         }
     }
-    public void ReloadFinished()
+    private void ReloadFinished()
     {
         bulletsLeft = magazineSize;
         reloading = false;
@@ -122,7 +122,7 @@ public class GunSystem : MonoBehaviour
         while (remainingDistance > 0)
         {
             bulletTrail.transform.position = Vector3.Lerp(startPosition, hit, (1 - remainingDistance / distance) * trailSpeed);
-            remainingDistance -= bulletSpeed * Time.deltaTime;
+            remainingDistance -= trailSpeed * Time.deltaTime;
             yield return null;
         }
 
@@ -131,7 +131,7 @@ public class GunSystem : MonoBehaviour
         Destroy(bulletTrail.gameObject, bulletTrail.time);
     }
 
-    string NormalizeText(string input)
+    private string NormalizeText(string input)
     {
         string output = "";
 

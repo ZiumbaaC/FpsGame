@@ -5,17 +5,21 @@ using UnityEngine;
 public class PlayerLookInput : MonoBehaviour
 {
 
-    public Camera cam;
+    [SerializeField] private Camera cam;
     private float xRotation = 0f;
-    private float xSens = 30f, ySens = 20f;
+    private float sens = 50f;
+    [SerializeField] private float sensDistribution = 0.6f;
 
-    public float sensitivity = 1;
+    [SerializeField] private float sensitivity = 1;
 
 
     public void HandleLook(Vector2 input)
     {
         float mouseX = input.x;
         float mouseY = input.y;
+
+        float xSens = sens * sensDistribution;
+        float ySens = sens * (1 - sensDistribution);
 
         xRotation -= mouseY * Time.deltaTime * ySens * sensitivity;
         xRotation = Mathf.Clamp(xRotation, -80, 80);

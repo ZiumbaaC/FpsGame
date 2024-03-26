@@ -12,12 +12,14 @@ public class PlayerInput : MonoBehaviour
     private PlayerController playerController;
     private PlayerLookInput look;
     private GunSystem gun;
+    private AbilityHandler ab;
 
     public bool sprinting = false;
     public bool crouching = false;
 
     void Awake()
     {
+        ab = GetComponent<AbilityHandler>();
         input = new();
         playerActions = input.Player;
         playerController = GetComponent<PlayerController>();
@@ -26,9 +28,9 @@ public class PlayerInput : MonoBehaviour
         playerActions.Jump.performed += ctx => playerController.Jump();
         playerActions.Fire.performed += ctx => gun.Shoot();
         playerActions.Reload.performed += ctx => gun.Reload();
-        playerActions.Damage.performed += ctx => PlaceHolder("Damage");
-        playerActions.Movement1.performed += ctx => PlaceHolder("Movement1");
-        playerActions.Movement2.performed += ctx => PlaceHolder("Movement2");
+        playerActions.Damage.performed += ctx => ab.Damage();
+        playerActions.Movement1.performed += ctx => ab.Movement1();
+        playerActions.Movement2.performed += ctx => ab.Movement2();
         playerActions.SprintKeyboard.started += ctx => BeginSprint();
         playerActions.SprintKeyboard.canceled += ctx => CancelSprint();
         playerActions.Crouch.started += ctx => BeginCrouch();
@@ -55,11 +57,6 @@ public class PlayerInput : MonoBehaviour
     private void OnDisable()
     {
         playerActions.Disable();
-    }
-
-    private void PlaceHolder(string id)
-    {
-        Debug.Log(id);
     }
 
     private void BeginSprint()

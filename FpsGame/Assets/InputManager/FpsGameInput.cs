@@ -337,6 +337,17 @@ public partial class @FpsGameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e57f68e3-7af4-494b-a0a9-e4e960d50cc5"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e98219f5-af25-44ac-8802-4480b4ec6570"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",

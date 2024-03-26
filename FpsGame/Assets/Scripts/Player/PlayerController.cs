@@ -6,27 +6,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI healthText;
     private CharacterController controller;
     private PlayerInput input;
-    private Vector3 velocity;
-    private Vector3 movementVelocity;
+    public Vector3 velocity;
+    public Vector3 movementVelocity;
     private bool grounded;
 
-    public float maxHealth = 200f;
-    public float speed = 5f;
-    public float gravity = -9.8f;
-    public float jumpHeight = 3f;
-    public float sprintingSpeedBoost = 3f;
+    [SerializeField] private float maxHealth = 200f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float jumpHeight = 3f;
+    [SerializeField] private float sprintingSpeedBoost = 3f;
 
-    public int bHoppingStacks = 0;
-    public float bHoppingSpeedIncrease = 0.1f;
-    public bool bHoppable = false;
-    public int bHoppingCounter = 0;
-    public int bHoppingFrameWindow = 2;
+    [SerializeField] private int bHoppingStacks = 0;
+    [SerializeField] private float bHoppingSpeedIncrease = 0.1f;
+    [SerializeField] private bool bHoppable = false;
+    [SerializeField] private int bHoppingCounter = 0;
+    [SerializeField] private int bHoppingFrameWindow = 2;
 
-    [HideInInspector]
-    public float health;
+    [HideInInspector] public float health;
     private float movementSpeed;
 
     // Start is called before the first frame update
