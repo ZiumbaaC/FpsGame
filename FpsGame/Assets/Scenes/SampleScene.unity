@@ -1310,6 +1310,7 @@ GameObject:
   - component: {fileID: 1023349329}
   - component: {fileID: 1023349339}
   - component: {fileID: 1023349338}
+  - component: {fileID: 1023349340}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1330,15 +1331,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  timeBetweenShooting: 1.5
   spread: 0
   range: 50
   reloadTime: 3
   timeBetweenShots: 0
-  recoil: -20
   magazineSize: 6
   bulletsPerTap: 1
   allowButtonHold: 0
+  timeBetweenShooting: 1.5
+  recoil: -20
   trail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256, type: 3}
   trailSpawnPoint: {fileID: 1988261662}
   trailSpeed: 10
@@ -1383,7 +1384,6 @@ MonoBehaviour:
   gravity: -14
   jumpHeight: 1
   sprintingSpeedBoost: 0.45
-  gravityMultiplier: 1
   bHoppingStacks: 0
   bHoppingSpeedIncrease: 0.075
   bHoppable: 0
@@ -1543,13 +1543,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementAbilities: {fileID: 1023349338}
-  movement1: Dash
-  movement2: 
+  damageAbilities: {fileID: 1023349340}
+  movement1: dash
+  movement2: leap
+  damage: 
   passiveAbilities:
+  - Enhanced Movement
   - 
   - 
-  - 
-  dashForce: 50
+--- !u!114 &1023349340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023349328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ad12248eb84064e90dde2a86cb4238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091383171
 GameObject:
   m_ObjectHideFlags: 0

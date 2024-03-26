@@ -7,10 +7,16 @@ using UnityEngine;
 
 public class MovementAbilities : MonoBehaviour
 {
+    private PlayerController player;
+    private string[] passiveAbilities;
+
+    private void Awake()
+    {
+        player = GetComponent<PlayerController>();
+        passiveAbilities = GetComponent<AbilityHandler>().passiveAbilities;
+    }
     public void DASH()
     {
-        PlayerController player = GetComponent<PlayerController>();
-        string[] passiveAbilities = GetComponent<AbilityHandler>().passiveAbilities;
         float dashForce = 50 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
 
 
@@ -23,6 +29,22 @@ public class MovementAbilities : MonoBehaviour
         else
         {
             player.velocity.y = dashForce / 8;
+        }
+    }
+
+    public void LEAP()
+    {
+        float leapForce = 10 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
+
+
+        if (passiveAbilities.Contains("Momentum Saver"))
+        {
+            player.velocity.y += leapForce;
+        }
+        else
+        {
+            player.velocity.y = leapForce;
+            player.movementVelocity = new Vector3(0, 0, 0);
         }
     }
 
