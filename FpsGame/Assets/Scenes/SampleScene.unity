@@ -1544,12 +1544,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementAbilities: {fileID: 1023349338}
   damageAbilities: {fileID: 1023349340}
-  movement1: dash
-  movement2: leap
+  movement1: leap
+  movement2: ground_slam
   damage: 
   passiveAbilities:
   - Enhanced Movement
-  - 
+  - Momentum Saver
   - 
 --- !u!114 &1023349340
 MonoBehaviour:

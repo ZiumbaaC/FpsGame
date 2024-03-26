@@ -48,14 +48,14 @@ public class MovementAbilities : MonoBehaviour
         }
     }
 
-    public void GROUNDSLAM()
+    public void GROUND_SLAM()
     {
-        float slamForce = -10 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
+        float slamForce = -50 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
 
 
         if (passiveAbilities.Contains("Momentum Saver"))
         {
-            player.velocity.y += slamForce;
+            player.velocity.y = slamForce;
         }
         else
         {
