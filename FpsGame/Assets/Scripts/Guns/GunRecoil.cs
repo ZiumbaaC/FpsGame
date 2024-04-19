@@ -17,7 +17,7 @@ public class GunRecoil : MonoBehaviour
     private void Update()
     {
 
-        targetRotation -= new Vector3(0, -90, targetRotation2.z / gun.timeBetweenShooting * Time.deltaTime);
+        targetRotation -= new Vector3(0, 185, targetRotation2.z / gun.timeBetweenShooting * Time.deltaTime);
         timer += Time.deltaTime;
 
         if (timer >= gun.timeBetweenShooting)
@@ -25,13 +25,13 @@ public class GunRecoil : MonoBehaviour
             targetRotation2 = Vector3.zero;
         }
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
-        transform.localRotation = Quaternion.Euler(new(0, -90, currentRotation.z));
+        transform.localRotation = Quaternion.Euler(new(0, 185, currentRotation.z));
     }
 
     public void HandleRecoil()
     {
         timer = 0;
-        targetRotation += new Vector3(0, -90, -gun.recoil);
+        targetRotation += new Vector3(-gun.recoil, 185, 0);
         targetRotation2 = targetRotation;
     }
 }

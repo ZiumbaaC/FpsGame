@@ -39,7 +39,7 @@ public class GunSystem : MonoBehaviour
         bulletsLeft = magazineSize;
         readyToShoot = true;
         recoilSystem = transform.Find("CameraRot/CameraRecoil").GetComponent<Recoil>();
-        gunRecoilSystem = transform.Find("CameraRot/CameraRecoil/Main Camera/model").GetComponent<GunRecoil>();
+        gunRecoilSystem = transform.Find("CameraRot/CameraRecoil/Main Camera/RevolverModel2").GetComponent<GunRecoil>();
         ammoText.text = NormalizeText($"Ammo: {bulletsLeft}/{magazineSize}");
     }
 
