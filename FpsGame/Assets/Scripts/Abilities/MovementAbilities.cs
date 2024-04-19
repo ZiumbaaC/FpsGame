@@ -9,13 +9,15 @@ public class MovementAbilities : MonoBehaviour
 {
     private PlayerController player;
     private string[] passiveAbilities;
+    private AbilityHandler ab;
 
     private void Awake()
     {
         player = GetComponent<PlayerController>();
-        passiveAbilities = GetComponent<AbilityHandler>().passiveAbilities;
+        ab = GetComponent<AbilityHandler>();
+        passiveAbilities = ab.passiveAbilities;
     }
-    public void DASH()
+    public void DASH(int number)
     {
         float dashForce = 50 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
 
@@ -32,7 +34,7 @@ public class MovementAbilities : MonoBehaviour
         }
     }
 
-    public void LEAP()
+    public void LEAP(int number)
     {
         float leapForce = 10 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
 
@@ -48,7 +50,7 @@ public class MovementAbilities : MonoBehaviour
         }
     }
 
-    public void GROUND_SLAM()
+    public void GROUND_SLAM(int number)
     {
         float slamForce = -50 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
 
@@ -61,6 +63,29 @@ public class MovementAbilities : MonoBehaviour
         {
             player.velocity.y = slamForce;
             player.movementVelocity = new Vector3(0, 0, 0);
+        }
+    }
+
+    public void LEVITATE(int number)
+    {
+        float time = 4 * (1 + 0.25f * BoolToFloat(passiveAbilities.Contains("Enhanced Movement")));
+
+
+        if (number == 1)
+        {
+            ab.movement1Timer = time;
+            while (ab.movement1Timer > 0)
+            {
+                player.velocity = new Vector3(0, 0, 0);
+            }
+        }
+        else
+        {
+            ab.movement2Timer = time;
+            while (ab.movement2Timer > 0)
+            {
+                player.velocity = new Vector3(0, 0, 0);
+            }
         }
     }
 

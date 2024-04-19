@@ -1545,12 +1545,15 @@ MonoBehaviour:
   movementAbilities: {fileID: 1023349338}
   damageAbilities: {fileID: 1023349340}
   movement1: leap
-  movement2: ground_slam
+  movement2: levitate
   damage: 
   passiveAbilities:
   - Enhanced Movement
   - Momentum Saver
   - 
+  movement1Timer: 0
+  movement2Timer: 0
+  damageTimer: 0
 --- !u!114 &1023349340
 MonoBehaviour:
   m_ObjectHideFlags: 0
